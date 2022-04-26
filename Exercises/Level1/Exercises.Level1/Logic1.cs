@@ -17,9 +17,15 @@ public class Logic1
     /// cigarParty(50, false) → true
     /// cigarParty(70, true) → true
     /// </summary>
+    /// 
     public bool CigarParty(int cigars, bool isWeekend)
     {
-        throw new NotImplementedException();
+        if (cigars >= 40 && (isWeekend == true || cigars <=60))
+        {
+            return true;
+        }
+        
+        return false;
     }
 
     /// <summary>
@@ -34,9 +40,18 @@ public class Logic1
     /// dateFashion(5, 2) → 0
     /// dateFashion(5, 5) → 1
     /// </summary>
+    /// 
     public int DateFashion(int you, int date)
     {
-        throw new NotImplementedException();
+        if (you <= 2 || date <= 2)
+        {
+            return 0;
+        }
+        if (you >= 8 || date >= 8)
+        {
+            return 2;
+        }
+        return 1;
     }
 
     /// <summary>
@@ -49,9 +64,15 @@ public class Logic1
     /// squirrelPlay(95, false) → false
     /// squirrelPlay(95, true) → true
     /// </summary>
+    /// 
     public bool SquirrelPlay(int temp, bool isSummer)
     {
-        throw new NotImplementedException();
+        if (temp >= 60 && ((temp<=90 && isSummer == false) || (temp <= 100 && isSummer == true)))
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /// <summary>
@@ -65,9 +86,21 @@ public class Logic1
     /// caughtSpeeding(65, false) → 1
     /// caughtSpeeding(65, true) → 0
     /// </summary>
+    /// 
     public int CaughtSpeeding(int speed, bool isBirthday)
+
     {
-        throw new NotImplementedException();
+        int BirthdaySpeed = (speed / 5);
+
+        if ((isBirthday == true && BirthdaySpeed <= 60) || (speed <= 60 && isBirthday == false))
+        {
+            return 0;
+        }
+            if ((isBirthday == true && (BirthdaySpeed >= 61 || BirthdaySpeed <= 80)) || ((speed >=61 || speed <= 80) && isBirthday == false))
+        {
+            return 1;
+        }
+        return 2;
     }
 
     /// <summary>
