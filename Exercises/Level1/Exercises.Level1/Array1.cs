@@ -7,6 +7,7 @@ namespace Exercises.Level1;
 /// Use a[0], a[1], ... to access elements in an array, a.Length is the length of array.
 /// Allocate a new array like this: int[] a = new int[10];
 /// </summary>
+/// 
 public class Array1
 {
     /// <summary>
@@ -17,9 +18,13 @@ public class Array1
     /// firstLast6([6, 1, 2, 3]) → true
     /// firstLast6([13, 6, 1, 2, 3]) → false
     /// </summary>
+    /// 
     public bool FirstLast6(int[] nums)
     {
-        throw new NotImplementedException();
+        int first = nums[0];
+        int last = nums[nums.Length-1];
+
+        return first == 6 || last == 6;
     }
 
     /// <summary>
@@ -32,7 +37,19 @@ public class Array1
     /// </summary>
     public bool SameFirstLast(int[] nums)
     {
-        throw new NotImplementedException();
+        if (nums.Length == 0)
+        {
+            return false;
+        }
+
+        int firstElement = nums[0];
+        int latsIndex = nums.Length - 1;
+        int lastElement = nums[latsIndex];
+        if (firstElement == lastElement)
+        {
+            return true;
+        }
+        return false;
     }
 
     /// <summary>
@@ -40,9 +57,10 @@ public class Array1
     /// 
     /// makePi() → [3, 1, 4]
     /// </summary>
+    /// 
     public int[] MakePi()
     {
-        throw new NotImplementedException();
+        return new int[] { 3, 1, 4 };
     }
 
     /// <summary>
@@ -53,10 +71,18 @@ public class Array1
     /// commonEnd([1, 2, 3], [7, 3, 2]) → false
     /// commonEnd([1, 2, 3], [1, 3]) → true
     /// </summary>
+  
     public bool CommonEnd(int[] a, int[] b)
     {
-        throw new NotImplementedException();
+        int aFirstElement = a[0];
+        int bFirstElement = b[0];
+
+        int aLastElement = a[a.Length - 1];
+        int bLastElement = b[b.Length - 1];
+
+        return aFirstElement == bFirstElement || aLastElement == bLastElement;
     }
+
 
     /// <summary>
     /// Given an array of ints length 3, return the sum of all the elements.
@@ -65,9 +91,16 @@ public class Array1
     /// sum3([5, 11, 2]) → 18
     /// sum3([7, 0, 0]) → 7
     /// </summary>
+    /// 
     public int Sum3(int[] nums)
     {
-        throw new NotImplementedException();
+        int sum = 0;
+
+        foreach (var number in nums)
+        {
+            sum = sum + number;
+        }
+        return sum;
     }
 
     /// <summary>
@@ -78,9 +111,11 @@ public class Array1
     /// rotateLeft3([5, 11, 9]) → [11, 9, 5]
     /// rotateLeft3([7, 0, 0]) → [0, 0, 7]
     /// </summary>
+    /// 
+
     public int[] RotateLeft3(int[] nums)
     {
-        throw new NotImplementedException();
+        return new int[] { nums[1], nums[2], nums[0] };
     }
 
     /// <summary>
@@ -93,7 +128,7 @@ public class Array1
     /// </summary>
     public int[] Reverse3(int[] nums)
     {
-        throw new NotImplementedException();
+        return new int[] { nums[2], nums[1], nums[0] };
     }
 
     /// <summary>
@@ -104,9 +139,19 @@ public class Array1
     /// maxEnd3([11, 5, 9]) → [11, 11, 11]
     /// maxEnd3([2, 11, 3]) → [3, 3, 3]
     /// </summary>
+    /// 
     public int[] MaxEnd3(int[] nums)
     {
-        throw new NotImplementedException();
+        int firstElement = nums[0];
+        int lastElementIndex = nums.Length - 1;
+        int lastElement = nums[lastElementIndex];
+
+        if (firstElement > lastElement)
+        {
+            return new int[] { nums[0], nums[0], nums[0] };
+        }
+        return new int[] { nums[2], nums[2], nums[2] };
+
     }
 
     /// <summary>
@@ -118,9 +163,19 @@ public class Array1
     /// sum2([1, 1]) → 2
     /// sum2([1, 1, 1, 1]) → 2
     /// </summary>
+    ///
     public int Sum2(int[] nums)
     {
-        throw new NotImplementedException();
+
+        if (nums.Length==0)
+        {
+            return 0;
+        }
+        if (nums.Length==1)
+        {
+            return nums[0];
+        }
+        return (nums[0]+nums[1]);
     }
 
     /// <summary>
@@ -131,9 +186,10 @@ public class Array1
     /// middleWay([7, 7, 7], [3, 8, 0]) → [7, 8]
     /// middleWay([5, 2, 9], [1, 4, 5]) → [2, 4]
     /// </summary>
+    /// 
     public int[] MiddleWay(int[] a, int[] b)
     {
-        throw new NotImplementedException();
+        return new int[] { a[1], b[1] };
     }
 
     /// <summary>
@@ -146,7 +202,11 @@ public class Array1
     /// </summary>
     public int[] MakeEnds(int[] nums)
     {
-        throw new NotImplementedException();
+        int first = nums[0];
+        int lastIndex = nums.Length - 1;
+        int last = nums[lastIndex];
+
+        return new int[] { first, last };
     }
 
     /// <summary>
@@ -158,7 +218,14 @@ public class Array1
     /// </summary>
     public bool Has23(int[] nums)
     {
-        throw new NotImplementedException();
+        int first = nums[0];
+        int second = nums[1];
+
+        if (first == 2 || second == 2 || first == 3 || second == 3)
+        {
+            return true;
+        }
+        return false;
     }
 
     /// <summary>
@@ -170,7 +237,14 @@ public class Array1
     /// </summary>
     public bool No23(int[] nums)
     {
-        throw new NotImplementedException();
+        int first = nums[0];
+        int second = nums[1];
+
+        if (first != 2 && second != 2 && first != 3 && second != 3)
+        {
+            return true;
+        }
+        return false;
     }
 
     /// <summary>
@@ -182,178 +256,303 @@ public class Array1
     /// makeLast([1, 2]) → [0, 0, 0, 2]
     /// makeLast([3]) → [0, 3]
     /// </summary>
+    /// 
     public int[] MakeLast(int[] nums)
     {
-        throw new NotImplementedException();
+        int[] nums2 = new int[nums.Length*2];
+        nums2[nums2.Length-1]=nums[nums.Length-1];
+        return nums2;
     }
 
-    /// <summary>
-    /// Given an int array, return true if the array contains 2 twice, or 3 twice. The array will be
-    /// length 0, 1, or 2.
-    /// 
-    /// double23([2, 2]) → true
-    /// double23([3, 3]) → true
-    /// double23([2, 3]) → false
-    /// </summary>
-    public bool Double23(int[] nums)
-    {
-        throw new NotImplementedException();
+/// <summary>
+/// Given an int array, return true if the array contains 2 twice, or 3 twice. The array will be
+/// length 0, 1, or 2.
+/// 
+/// double23([2, 2]) → true
+/// double23([3, 3]) → true
+/// double23([2, 3]) → false
+/// </summary>
+/// 
+public bool Double23(int[] nums)
+{
+        if(nums.Length>=2 && (nums[0]==2 && nums[1]==2 || nums[0]==3 && nums[1]==3))
+        {
+            return true;
+        }
+        return false;
+}
+
+/// <summary>
+/// Given an int array length 3, if there is a 2 in the array immediately followed by a 3, set the
+/// 3 element to 0. Return the changed array.
+/// 
+/// fix23([1, 2, 3]) → [1, 2, 0]
+/// fix23([2, 3, 5]) → [2, 0, 5]
+/// fix23([1, 2, 1]) → [1, 2, 1]
+/// </summary>
+public int[] Fix23(int[] nums)
+{
+        int first = nums[0];
+        int second = nums[1];
+        int third = nums[2];
+
+        if (first==2 && second==3)
+        {
+            return new int[] {first, 0, third};
+        }
+        if (second == 2 && third == 3)
+        {
+            return new int[] {first, second, 0 };
+        }
+        return nums;
+}
+
+/// <summary>
+/// Start with 2 int arrays, a and b, of any length. Return how many of the arrays have 1 as
+/// their first element.
+/// 
+/// start1([1, 2, 3], [1, 3]) → 2
+/// start1([7, 2, 3], [1]) → 1
+/// start1([1, 2], []) → 1
+/// </summary>
+/// 
+public int Start1(int[] a, int[] b)
+{
+
+        if ((a.Length > 0 && a[0] == 1) && (b.Length > 0 && b[0] == 1))
+        {
+            return 2;
+        }
+
+        if ((a.Length > 0 && a[0] == 1) || (b.Length > 0 && b[0] == 1))
+        {
+            return 1;
+        }
+
+        return 0;
+}
+
+/// <summary>
+/// Start with 2 int arrays, a and b, each length 2. Consider the sum of the values in each
+/// array. Return the array which has the largest sum. In event of a tie, return a.
+/// 
+/// biggerTwo([1, 2], [3, 4]) → [3, 4]
+/// biggerTwo([3, 4], [1, 2]) → [3, 4]
+/// biggerTwo([1, 1], [1, 2]) → [1, 2]
+/// </summary>
+/// 
+public int[] BiggerTwo(int[] a, int[] b)
+{
+        int firstA = a[0];
+        int secondA = a[1];
+        int firstB = b[0];
+        int secondB = b[1];
+
+        if (firstA+secondA>=firstB+secondB)
+        {
+            return a;
+        }
+        return b;
+}
+
+/// <summary>
+/// Given an array of ints of even length, return a new array length 2 containing the middle
+/// two elements from the original array. The original array will be length 2 or more.
+/// 
+/// makeMiddle([1, 2, 3, 4]) → [2, 3]
+/// makeMiddle([7, 1, 2, 3, 4, 9]) → [2, 3]
+/// makeMiddle([1, 2]) → [1, 2]
+/// </summary>
+/// 
+public int[] MakeMiddle(int[] nums)
+{
+        int length = nums.Length - 1;
+        int first = nums[length/2];
+        int second = nums[length/2+1];
+
+    return new int[] {first, second};
+}
+
+/// <summary>
+/// Given 2 int arrays, each length 2, return a new array length 4 containing all their
+/// elements.
+/// 
+/// plusTwo([1, 2], [3, 4]) → [1, 2, 3, 4]
+/// plusTwo([4, 4], [2, 2]) → [4, 4, 2, 2]
+/// plusTwo([9, 2], [3, 4]) → [9, 2, 3, 4]
+/// </summary>
+public int[] PlusTwo(int[] a, int[] b)
+{
+    return new int[] {a[0], a[1], b[0], b[1] };
+}
+
+/// <summary>
+/// Given an array of ints, swap the first and last elements in the array. Return the modified
+/// array. The array length will be at least 1.
+/// 
+/// swapEnds([1, 2, 3, 4]) → [4, 2, 3, 1]
+/// swapEnds([1, 2, 3]) → [3, 2, 1]
+/// swapEnds([8, 6, 7, 9, 5]) → [5, 6, 7, 9, 8]
+/// </summary>
+public int[] SwapEnds(int[] nums)
+{
+        int first = nums[0];
+        int last = nums[nums.Length-1];
+
+        nums[0] = last;
+        nums[nums.Length-1] = first;
+
+    return nums;
+            
+}
+
+/// <summary>
+/// Given an array of ints of odd length, return a new array length 3 containing the elements
+/// from the middle of the array. The array length will be at least 3.
+/// 
+/// midThree([1, 2, 3, 4, 5]) → [2, 3, 4]
+/// midThree([8, 6, 7, 5, 3, 0, 9]) → [7, 5, 3]
+/// midThree([1, 2, 3]) → [1, 2, 3]
+/// </summary>
+public int[] MidThree(int[] nums)
+{
+    int first = nums[(nums.Length+1)/2-2];
+    int second = nums[(nums.Length+1)/2-1];
+    int third = nums[(nums.Length+1)/2];
+        
+        return new int[] {first, second, third};
+}
+
+/// <summary>
+/// Given an array of ints of odd length, look at the first, last, and middle values in the array
+/// and return the largest. The array length will be a least 1.
+/// 
+/// maxTriple([1, 2, 3]) → 3
+/// maxTriple([1, 5, 3]) → 5
+/// maxTriple([5, 2, 3]) → 5
+/// </summary>
+public int MaxTriple(int[] nums)
+{
+        int first = nums[0];
+        int middle = nums[(nums.Length+1)/2-1];
+        int last = nums[nums.Length-1];
+
+        if(first>middle && first>last)
+        {
+            return first;
+        }
+            if(middle>first && middle>last)
+            {
+                return middle;
+            }
+
+    return last;
+}
+
+/// <summary>
+/// Given an int array of any length, return a new array of its first 2 elements. If the array is
+/// smaller than length 2, use whatever elements are present.
+/// 
+/// frontPiece([1, 2, 3]) → [1, 2]
+/// frontPiece([1, 2]) → [1, 2]
+/// frontPiece([1]) → [1]
+/// </summary>
+public int[] FrontPiece(int[] nums)
+{
+        int length = nums.Length;
+
+        if(length>=2)
+        {
+            return new int[] {nums[0], nums[1] };
+        }
+            if(length==1)
+        {
+            return new int[] { nums[0] };
+        }
+
+    return nums;
+
     }
 
-    /// <summary>
-    /// Given an int array length 3, if there is a 2 in the array immediately followed by a 3, set the
-    /// 3 element to 0. Return the changed array.
-    /// 
-    /// fix23([1, 2, 3]) → [1, 2, 0]
-    /// fix23([2, 3, 5]) → [2, 0, 5]
-    /// fix23([1, 2, 1]) → [1, 2, 1]
-    /// </summary>
-    public int[] Fix23(int[] nums)
-    {
-        throw new NotImplementedException();
-    }
+/// <summary>
+/// We'll say that a 1 immediately followed by a 3 in an array is an "unlucky" 1. Return true if
+/// the given array contains an unlucky 1 in the first 2 or last 2 positions in the array.
+/// 
+/// unlucky1([1, 3, 4, 5]) → true
+/// unlucky1([2, 1, 3, 4, 5]) → true
+/// unlucky1([1, 1, 1]) → false
+/// </summary>
+public bool Unlucky1(int[] nums)
+{
+        
+        if (nums.Length <= 1)
+        {
+            return false;
+        }
 
-    /// <summary>
-    /// Start with 2 int arrays, a and b, of any length. Return how many of the arrays have 1 as
-    /// their first element.
-    /// 
-    /// start1([1, 2, 3], [1, 3]) → 2
-    /// start1([7, 2, 3], [1]) → 1
-    /// start1([1, 2], []) → 1
-    /// </summary>
-    public int Start1(int[] a, int[] b)
-    {
-        throw new NotImplementedException();
-    }
+        if (nums.Length == 2 && nums[0] == 1 && nums[1] == 3)
+        {
+            return true;
+        }
 
-    /// <summary>
-    /// Start with 2 int arrays, a and b, each length 2. Consider the sum of the values in each
-    /// array. Return the array which has the largest sum. In event of a tie, return a.
-    /// 
-    /// biggerTwo([1, 2], [3, 4]) → [3, 4]
-    /// biggerTwo([3, 4], [1, 2]) → [3, 4]
-    /// biggerTwo([1, 1], [1, 2]) → [1, 2]
-    /// </summary>
-    public int[] BiggerTwo(int[] a, int[] b)
-    {
-        throw new NotImplementedException();
-    }
+        if (nums.Length >= 3 && 
+           ((nums[0] == 1 && nums[1] == 3) ||
+           (nums[1] == 1 && nums[2] == 3) ||
+           (nums[nums.Length - 3] == 1 && nums[nums.Length - 2] == 3) ||
+           (nums[nums.Length - 2] == 1 && nums[nums.Length - 1] == 3)))
+        {
+            return true;
+        }
 
-    /// <summary>
-    /// Given an array of ints of even length, return a new array length 2 containing the middle
-    /// two elements from the original array. The original array will be length 2 or more.
-    /// 
-    /// makeMiddle([1, 2, 3, 4]) → [2, 3]
-    /// makeMiddle([7, 1, 2, 3, 4, 9]) → [2, 3]
-    /// makeMiddle([1, 2]) → [1, 2]
-    /// </summary>
-    public int[] MakeMiddle(int[] nums)
-    {
-        throw new NotImplementedException();
-    }
+        return false;
+}
 
-    /// <summary>
-    /// Given 2 int arrays, each length 2, return a new array length 4 containing all their
-    /// elements.
-    /// 
-    /// plusTwo([1, 2], [3, 4]) → [1, 2, 3, 4]
-    /// plusTwo([4, 4], [2, 2]) → [4, 4, 2, 2]
-    /// plusTwo([9, 2], [3, 4]) → [9, 2, 3, 4]
-    /// </summary>
-    public int[] PlusTwo(int[] a, int[] b)
-    {
-        throw new NotImplementedException();
-    }
+/// <summary>
+/// Given 2 int arrays, a and b, return a new array length 2 containing, as much as will fit, the
+/// elements from a followed by the elements from b. The arrays may be any length, including
+/// 0, but there will be 2 or more elements available between the 2 arrays.
+/// 
+/// make2([4, 5], [1, 2, 3]) → [4, 5]
+/// make2([4], [1, 2, 3]) → [4, 1]
+/// make2([], [1, 2]) → [1, 2]
+/// </summary>
+public int[] Make2(int[] a, int[] b)
+{
+        if(a.Length==0)
+        {
+            return b;
+        }
+        if(a.Length == 1)
+        {
+            return new int[] { a[0], b[0] };
+        }
+        else
+            return new int[] { a[0], a[1]};
+}
 
-    /// <summary>
-    /// Given an array of ints, swap the first and last elements in the array. Return the modified
-    /// array. The array length will be at least 1.
-    /// 
-    /// swapEnds([1, 2, 3, 4]) → [4, 2, 3, 1]
-    /// swapEnds([1, 2, 3]) → [3, 2, 1]
-    /// swapEnds([8, 6, 7, 9, 5]) → [5, 6, 7, 9, 8]
-    /// </summary>
-    public int[] SwapEnds(int[] nums)
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Given an array of ints of odd length, return a new array length 3 containing the elements
-    /// from the middle of the array. The array length will be at least 3.
-    /// 
-    /// midThree([1, 2, 3, 4, 5]) → [2, 3, 4]
-    /// midThree([8, 6, 7, 5, 3, 0, 9]) → [7, 5, 3]
-    /// midThree([1, 2, 3]) → [1, 2, 3]
-    /// </summary>
-    public int[] MidThree(int[] nums)
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Given an array of ints of odd length, look at the first, last, and middle values in the array
-    /// and return the largest. The array length will be a least 1.
-    /// 
-    /// maxTriple([1, 2, 3]) → 3
-    /// maxTriple([1, 5, 3]) → 5
-    /// maxTriple([5, 2, 3]) → 5
-    /// </summary>
-    public int MaxTriple(int[] nums)
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Given an int array of any length, return a new array of its first 2 elements. If the array is
-    /// smaller than length 2, use whatever elements are present.
-    /// 
-    /// frontPiece([1, 2, 3]) → [1, 2]
-    /// frontPiece([1, 2]) → [1, 2]
-    /// frontPiece([1]) → [1]
-    /// </summary>
-    public int[] FrontPiece(int[] nums)
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// We'll say that a 1 immediately followed by a 3 in an array is an "unlucky" 1. Return true if
-    /// the given array contains an unlucky 1 in the first 2 or last 2 positions in the array.
-    /// 
-    /// unlucky1([1, 3, 4, 5]) → true
-    /// unlucky1([2, 1, 3, 4, 5]) → true
-    /// unlucky1([1, 1, 1]) → false
-    /// </summary>
-    public bool Unlucky1(int[] nums)
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Given 2 int arrays, a and b, return a new array length 2 containing, as much as will fit, the
-    /// elements from a followed by the elements from b. The arrays may be any length, including
-    /// 0, but there will be 2 or more elements available between the 2 arrays.
-    /// 
-    /// make2([4, 5], [1, 2, 3]) → [4, 5]
-    /// make2([4], [1, 2, 3]) → [4, 1]
-    /// make2([], [1, 2]) → [1, 2]
-    /// </summary>
-    public int[] Make2(int[] a, int[] b)
-    {
-        throw new NotImplementedException();
-    }
-
-    /// <summary>
-    /// Given 2 int arrays, a and b, of any length, return a new array with the first element of
-    /// each array. If either array is length 0, ignore that array.
-    /// 
-    /// front11([1, 2, 3], [7, 9, 8]) → [1, 7]
-    /// front11([1], [2]) → [1, 2]
-    /// front11([1, 7], []) → [1]
-    /// </summary>
-    public int[] Front11(int[] a, int[] b)
-    {
-        throw new NotImplementedException();
-    }
+/// <summary>
+/// Given 2 int arrays, a and b, of any length, return a new array with the first element of
+/// each array. If either array is length 0, ignore that array.
+/// 
+/// front11([1, 2, 3], [7, 9, 8]) → [1, 7]
+/// front11([1], [2]) → [1, 2]
+/// front11([1, 7], []) → [1]
+/// </summary>
+/// 
+public int[] Front11(int[] a, int[] b)
+{
+        if(a.Length==0 && b.Length > 0) 
+        {
+            return new int[] { b[0]};
+        }
+        if (b.Length == 0 && a.Length > 0)
+        {
+            return new int[] { a[0]};
+        }
+        if (a.Length > 0 && b.Length > 0)
+            {
+            return new int[] { a[0], b[0] };
+            }
+        return new int[0];
+}
 }
