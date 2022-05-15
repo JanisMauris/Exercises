@@ -17,7 +17,14 @@ public class Array2
     /// </summary>
     public int CountEvens(int[] nums)
     {
-        throw new NotImplementedException();
+        int number = 0;
+
+        for (int i=0; i < nums.Length; i++)
+        {
+            if (nums[i] %2== 0)
+                number++;
+        }
+        return number;
     }
 
     /// <summary>
@@ -31,7 +38,15 @@ public class Array2
     /// </summary>
     public int BigDiff(int[] nums)
     {
-        throw new NotImplementedException();
+        int min = nums[0];
+        int max = nums[0];
+
+        for (int i=0; i<nums.Length; i++)
+        {
+            min = Math.Min(min, nums[i]);
+            max = Math.Max(max, nums[i]);
+        }
+        return max-min;
     }
 
     /// <summary>
@@ -47,7 +62,18 @@ public class Array2
     /// </summary>
     public int CenteredAverage(int[] nums)
     {
-        throw new NotImplementedException();
+        int min = nums[0];
+        int max = nums[0];
+        int sum = 0;    
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            min = Math.Min(min, nums[i]);
+            max = Math.Max(max, nums[i]);
+            sum+=nums[i];
+        }
+        sum = sum - min - max;
+        return sum / (nums.Length - 2);
     }
 
     /// <summary>
@@ -61,7 +87,20 @@ public class Array2
     /// </summary>
     public int Sum13(int[] nums)
     {
-        throw new NotImplementedException();
+        int sum = 0;
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if(nums[i] != 13)
+            {
+                sum+=nums[i];
+            }
+            if(nums[i]==13 && i < nums.Length-1)
+            {
+                nums[i] = 0;
+                nums[i+1] = 0;
+            }
+        }
+        return sum;
     }
 
     /// <summary>
@@ -75,7 +114,25 @@ public class Array2
     /// </summary>
     public int Sum67(int[] nums)
     {
-        throw new NotImplementedException();
+        int sum = 0;
+        bool stop = false;
+
+        for (int i=0; i<nums.Length; i++)
+        {
+            if(nums[i]==6)
+            {
+                stop = true;
+            }
+            if(stop==false)
+            {
+                sum += nums[i];
+            }
+            if(nums[i]==7 && stop==true)
+            {
+                stop = false;
+            }    
+        }
+        return sum;
     }
 
     /// <summary>
@@ -87,7 +144,20 @@ public class Array2
     /// </summary>
     public bool Has22(int[] nums)
     {
-        throw new NotImplementedException();
+        bool found = false;
+
+        for (int i=0; i<nums.Length; i++)
+        {
+            if (nums[i]==2 && i>0 && nums[i-1]==2)
+                {
+                    found = true;
+                }
+            if (nums[i]==2 && i<nums.Length-1 && nums[i+1]==2)
+            {
+                found = true;
+            }
+        }
+        return found;
     }
 
     /// <summary>
@@ -99,7 +169,16 @@ public class Array2
     /// </summary>
     public bool Lucky13(int[] nums)
     {
-        throw new NotImplementedException();
+        bool number = true;
+        
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (nums[i]==1 || nums[i]==3)
+                {
+                number = false;
+                }
+        }
+        return number;
     }
 
     /// <summary>
@@ -111,7 +190,21 @@ public class Array2
     /// </summary>
     public bool Sum28(int[] nums)
     {
-        throw new NotImplementedException();
+        int sum = 0;
+        bool result = false;
+
+        for (int i=0; i<nums.Length; i++)
+        {
+            if(nums[i]==2)
+            {
+                sum += 2;
+            }
+        }
+        if(sum==8)
+        {
+            result = true;
+        }
+        return result;
     }
 
     /// <summary>
@@ -123,7 +216,26 @@ public class Array2
     /// </summary>
     public bool More14(int[] nums)
     {
-        throw new NotImplementedException();
+        bool result = false;
+        int sumOne = 0;
+        int sumFour = 0;
+
+        for(int i=0; i<nums.Length; i++)
+        {
+            if (nums[i]==1)
+            {
+                sumOne++;
+            }
+            if(nums[i]==4)
+            {
+                sumFour++;
+            }
+            if(sumOne>sumFour)
+            {
+                result = true;
+            }
+            else result = false;
+        }
     }
 
     /// <summary>
